@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StenoKeyboard v1 Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+            <a href="index.html">Back to Home</a>
+    </nav>
+    <section>
+        <h2>Problem Statement</h2>
+        <p>Stenography keyboards can type with a very high words per minute, reaching above 200wpm. This makes them very attractive for typing. However, the modern keyboard versions require software to run on the computer. This results in you needing two keyboards, one for stenography, and one for when the software is not running, ie when your computer has just turned on. In addition, steno keyboards aren't very good at typing code are other complex text that requires symbols and words that don't appear in the normal dictionary.</p>
+    </section>
+
+    <section>
+        <h2>Design Requirements</h2>
+        <ul>
+            <li>The keyboard should be able to perform all the functions of normal keyboard</li>
+            <li>The steno dictionary should be easily editable, both in bulk and in use</li>
+            <li>There should be no noticeable latency</li>
+            <li>It should be appropriate to use in the workplace</li>
+	    <li>It should perform the steno function well</li>
+	    <li>It should perform the normal keyboard function well</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Alternatives</h2>
+        <ul>
+            <li>The Characorder doens't have an open source dictionary and only has a web interface for interacting with it. In addition, the stenography keys aren't vertically alligned and they keyboard is inclined. This makes it harder to press more than one at key at a time, as required by stenography.</li>
+            <li>The polyglot is less fleshed out as a keyboard and has too few keys to be easy to use in day to day use. Otherwise is pretty much ideal with the embedded steno version.</li>
+        </ul>
+    </section>
+
+
+    <section>
+        <h2>Development and Design</h2>
+        <p>The initial backplate was large and made from mild steel. The "kerf" was too wide, meaning the keys click into place, leading to slightly rotated keys and an insecure plate.</p>
+        <img src="media/steel_frame.jpg" alt="Steel Frame">
+        <p>After some testing the size of the keyboard was too large to be useful. As it needed to be made again due to the poorly fitting, alternative layots were investigated. </p>
+        <img src="media/steel_frame_test.jpg" alt="Steel Frame Test">
+        <p></p>
+        <img src="media/aluminium_frame.jpg" alt="Aluminium Frame">
+        <p>The patterns of the buttons were put on the wrong side. Not wanting to re-order, an attempt at fixing was made. It turns out this could be fixed without much issue. The diodes were offset enough that the switches could be soldered right over the top with the exception of 1 diode, pictured below.</p>
+        <img src="media/trace%20fixing.jpg" alt="Trace Fixing">
+        <p></p>
+        <img src="media/wood_frame.jpg" alt="Wood Frame">
+        <p></p>
+        <img src="media/finished_board.jpg" alt="Finished Board">
+        <p></p>
+    </section>
+
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+body {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+img {
+    width: 50%;
+    height: auto; /* This ensures the image maintains its aspect ratio */
+}
+
