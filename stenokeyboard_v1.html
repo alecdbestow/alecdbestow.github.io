@@ -36,20 +36,44 @@
 
     <section>
         <h2>Development and Design</h2>
-        <p>The initial backplate was large and made from mild steel. The "kerf" was too wide, meaning the keys click into place, leading to slightly rotated keys and an insecure plate.</p>
-        <img src="media/steel_frame.jpg" alt="Steel Frame">
+        <p>The initial backplate was large and made from mild steel. The "kerf" was too wide, meaning the switches didn't fit into place snugly, leading to slightly rotated keys and an insecure plate.</p>
+        <img src="media/stenokeyboard/steel_frame.jpg" alt="Steel Frame">
         <p>After some testing the size of the keyboard was too large to be useful. As it needed to be made again due to the poorly fitting, alternative layots were investigated. </p>
-        <img src="media/steel_frame_test.jpg" alt="Steel Frame Test">
+        <img src="media/stenokeyboard/steel_frame_test.jpg" alt="Steel Frame Test">
+        <p>After some investigation, a very simple ortholinear layout was more appropriate as it's much easier to buy a set of keys and no stabilisers are necessary.</p>
+        <p>The design was then lasercut from 1.4mm aluminium using the metal laser cutter at UNSW Kirby Makerspace. This meant the kerf issue could be resolved as several test squares could be cut and tested before production to find the optimal size of hole to fit the switches.</p>
+        <img src="media/stenokeyboard/aluminium_frame.jpg" alt="Aluminium Frame">
+        <p>EasyEda makes designing PCBs very easy.</p>
+        <img src="media/stenokeyboard/schematic.png" alt="Steel Frame">
+        <img src="media/stenokeyboard/PCB.png" alt="Steel Frame">
+        <p>The patterns of the buttons were put on the wrong side. Not wanting to re-order, an attempt at fixing was made. It turns out this could be fixed without much issue. The diodes were offset esteel_framenough that the switches could be soldered right over the top with the exception of 1 diode, pictured below.</p>
+        <img src="media/stenokeyboard/trace%20fixing.jpg" alt="Trace Fixing">
         <p></p>
-        <img src="media/aluminium_frame.jpg" alt="Aluminium Frame">
-        <p>The patterns of the buttons were put on the wrong side. Not wanting to re-order, an attempt at fixing was made. It turns out this could be fixed without much issue. The diodes were offset enough that the switches could be soldered right over the top with the exception of 1 diode, pictured below.</p>
-        <img src="media/trace%20fixing.jpg" alt="Trace Fixing">
-        <p></p>
-        <img src="media/wood_frame.jpg" alt="Wood Frame">
-        <p></p>
-        <img src="media/finished_board.jpg" alt="Finished Board">
-        <p></p>
+        <img src="media/stenokeyboard/wood_frame.jpg" alt="Wood Frame">
+        <p>A look at the final product. The keyboard can switch between stenography and qwerty using a press of the opt button.</p>
+        <img src="media/stenokeyboard/finished_board.jpg" alt="Finished Board">
+        <p>This video shows a demonstration of the final product performing its inbuilt stenography function. Evidently a lot more work is needed to become familiar with it.</p>
+        <video controls>
+            <source src="media/stenokeyboard/finished_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
     </section>
+    <section>
+        <h2>Materials</h2>
+
+    </section>
+    <ul>
+    <li>XDAL White keycap set</li>
+    <li>26 Gateron clear 30g linear switches (from old stenography board)</li>
+    <li>70 Gateron white 38g linear switches</li>
+    <li>1 PCB</li>
+    <li>Block of Redgum</li>
+    <li>1.4mm aluminium plate</li>
+    <li>1 Sparkfun Pro Micro rp2040</li>
+    <li>1 USB-C extension</li>
+    </ul>
+
 
 </body>
 </html>

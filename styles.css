@@ -7,4 +7,10 @@ img {
     width: 50%;
     height: auto; /* This ensures the image maintains its aspect ratio */
 }
-
+video {
+    width: 50%; /* Set the width of the video player */
+    height: auto; /* Set the height to auto to maintain aspect ratio */
+}
+ul li {
+    margin-bottom: 15px; /* Adjusts spacing between items */
+}
