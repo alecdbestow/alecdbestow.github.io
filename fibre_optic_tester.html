@@ -20,6 +20,7 @@
         <section>
             <h2>The Idea.</h2>
             <p>You can find SFPs for relatively cheap online, my work had some broken spare ones that I could use. They contain a laser and a sensor to detect that laser, called a Recieving Optical Sub-Assembly (ROSA). If we could put two of those sensors next to each other, we can plug in the LC connector and see which core the TX signal is on. The ROSA will work well as a sensor in this application as it is very sensitive and already tuned to the required wavelength.</p>
+            
             <h2>Viability and Voltages</h2>
             <p>In order to develop an electrical design and assess the Viability of the idea, I needed to find out what voltage the sensor required an what it's output looked like. The best way seemed to be directly measure them off a working SFP board. To do this, I soldered some wires directly onto the ROSA pins (see below).</p>
             <img src="media/fibre_optic_tester/soldered_wires.jpg" alt="wires soldered onto connections" style="width: 70%;">
@@ -29,8 +30,15 @@
             <p>I later found a pinout schematic that showed the pinout, and the operating characterstics of a ROSA, which seemed to correspond with the pinout from the one I had.</p>
             <img src="media/fibre_optic_tester/pinout.png" alt="pinout" style="width: 70%;">
             <img src="media/fibre_optic_tester/electrical_characteristics.png" style="width: 70%;">
+            
             <h2>Drawing the schematic</h2>
-            <p>With confirmation that the ROSAs could be used for this application, I put together a schematic. I used EasyEDA for it's integration with JLCPCB's assembly and board printing.</p>
+            <p>With confirmation that the ROSAs could be used for this application, I put together a schematic. I used EasyEDA for it's integration with JLCPCB's assembly and board printing. Note the following features that make use easier.</p>
+            <ul>
+                <li>Pushbutton activates both sensors.</li>
+                <li>Potentiometer to set comparitor voltage reference.</li>
+                <li>USB-C port to support charging.</li>
+                <li>Small formfactor.</li>
+            </ul>
             <img src="media/fibre_optic_tester/fibre_checker_schematic.png" alt="schematic" style="width: 100%;">
             <p>Ideally the board could fit into the original case from an SFP. This would give it a small form factor, while maintaining the ability to plug in an LC connector. Additionally, I wanted it to be battery powered, with a USB-C port for easy recharge. If the battery was small enough, it could fit below the PCB but still within the SFP case.</p>
 
@@ -39,11 +47,12 @@
         </section>
         <section>
             <h2>Assembling the Device</h2>
-            <p></p>
+            <p>In the schematic design, I didn't realise that the ROSA produces a current instead of a voltage, so initially both LEDs showed at the same time with nothing plugged in. This could be solved postumously with the addition of two pulldown resistors soldered between the output pins and ground (see below).</p>
+            <img src="media/fibre_optic_tester/closeup.jpg">
         </section>
         <section>
-            <h2>Working Device</h2>
-            <p></p>
+            <h2>Demonstration</h2>
+            <p>The device works! Here the demonstration shows when the TX core is plugged into the correct port, a green light shows. When plugged into the wrong port, a red light shows. If there is a light on neither side, it shows there is no light being received. If the battery is out of charge, it can be powered entirely off an external USB supply.</p>
             <video controls>
                 <source src="media/fibre_optic_tester/demonstration_fixed.mp4" type="video/mp4">
                 Your browser does not support the video tag.
