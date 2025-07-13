@@ -10,7 +10,7 @@
     </nav>
     <section>
         <h2>Problem Statement</h2>
-        <p>Stenography keyboards can type with a very high words per minute, reaching above 200wpm. This makes them very attractive for typing. However, the modern keyboard versions require software to run on the computer. This results in you needing two keyboards, one for stenography, and one for when the software is not running, ie when your computer has just turned on. In addition, steno keyboards aren't very good at typing code are other complex text that requires symbols and words that don't appear in the normal dictionary.</p>
+        <p>Stenography keyboards can type with a very high words per minute, reaching above 200wpm. This makes them very good for high-speed typing. However, most modern keyboard versions require software to run on the computer. This results in you needing two keyboards, one for stenography, and one for when the software cannot be run, ie when your computer has just turned on. In addition, steno keyboards aren't well suited for typing code or other complex text that requires symbols and words that don't appear in the normal dictionary.</p>
     </section>
 
     <section>
@@ -28,7 +28,7 @@
     <section>
         <h2>Alternatives</h2>
         <ul>
-            <li>The Characorder doens't have an open source dictionary and only has a web interface for interacting with it. In addition, the stenography keys aren't vertically alligned and they keyboard is inclined. This makes it harder to press more than one at key at a time, as required by stenography.</li>
+            <li>The Characorder doesn't have an open source dictionary and only has a web interface for interacting with it. In addition, the stenography keys aren't vertically alligned and the keyboard is inclined. This makes it harder to press more than one at key at a time, as required by stenography.</li>
             <li>The polyglot is less fleshed out as a keyboard and has too few keys to be easy to use in day to day use. Otherwise is pretty much ideal with the embedded steno version.</li>
         </ul>
     </section>
@@ -36,17 +36,35 @@
 
     <section>
         <h2>Development and Design</h2>
-        <p>The initial backplate was large and made from mild steel. The "kerf" was too wide, meaning the switches didn't fit into place snugly, leading to slightly rotated keys and an insecure plate.</p>
+        
+    <section>
+    	<h2>Software</h2>
+    	<p>The link to the software can be found <a href=https://github.com/alecdbestow/keyboard>here</a>.</p>
+        <p>The software was by far and away the most difficult part of this project, who could have guessed? There are several major sections: the dictionary, the USB interface, the translation lookup, the button reader, and the string formatter.</p>
+
+        <h3>The dictionary</h3>
+        <p>The plover dictionary for stenography translations is over 150,000 entries and is a 4MB .json file. The Raspberry Pi Pico only has 2MB of on board flash, so it would struggle to hold the whole dictionary. Instead, the initial design has an external SD card that could hold the dictionary. The SPI interface with the SD card was very slow, ~1 ms per read, which meant the fat32 file structure would be too slow.</p>
+        <p>To minimise the frequency of read calls, a custom hash map format was used directly on the SD card storage addresses. This mean it would only mostly only take 1 read call to lookup a stroke as opposed the to the several required to negotiate the file system. The custom hashmap was flashed onto the SD card using a dd from a linux machine.</p>
+        
+        <h3>USB interface</h3>
+        <p>The USB interface uses a USB HID protocol to prompt the keystrokes. This caused some problems while debugging. The protocol requires regular calls to maintain the connection with the host computer. While debugging, the program pauses those regular calls, causing it to break. It took quite some time to figure why it would break during debugging.</p>
+    </section>
+        <h2>Backplate</h2>
+        
+        <p>The initial backplate was large and made from mild steel. The "kerf" was too wide, meaning the switches didn't fit into place snugly, leading to slightly rotated keys and an insecure fit between plate and switches.</p>
         <img src="media/stenokeyboard/steel_frame.jpg" alt="Steel Frame">
-        <p>After some testing the size of the keyboard was too large to be useful. As it needed to be made again due to the poorly fitting, alternative layots were investigated. </p>
+        <p>The plate was used as a test platform for the software with switches, keycaps, and diodes pilfered from an old spare mechaincal keyboard.</p>
         <img src="media/stenokeyboard/steel_frame_test.jpg" alt="Steel Frame Test">
-        <p>After some investigation, a very simple ortholinear layout was more appropriate as it's much easier to buy a set of keys and no stabilisers are necessary.</p>
+        <p>Since the steel frame was unsuitable, the opportunity was taken to improve the initial layout. Instead, a simpler ortholinear layout was chosen, for the smaller size and the ease of finding a keycap set.</p>
         <p>The design was then lasercut from 1.4mm aluminium using the metal laser cutter at UNSW Kirby Makerspace. This meant the kerf issue could be resolved as several test squares could be cut and tested before production to find the optimal size of hole to fit the switches.</p>
         <img src="media/stenokeyboard/aluminium_frame.jpg" alt="Aluminium Frame">
-        <p>EasyEda makes designing PCBs very easy.</p>
+    </section>
+    <section>
+        <h2>PCB</h2>
+        <p>The PCB layout is very simple, the Sparkfun RP2040 Pro Micro is soldered to the board using its GPIO header pins. These then connect to the grid of traces for the keys.</p>
         <img src="media/stenokeyboard/schematic.png" alt="Steel Frame">
         <img src="media/stenokeyboard/PCB.png" alt="Steel Frame">
-        <p>The patterns of the buttons were put on the wrong side. Not wanting to re-order, an attempt at fixing was made. It turns out this could be fixed without much issue. The diodes were offset esteel_framenough that the switches could be soldered right over the top with the exception of 1 diode, pictured below.</p>
+        <p>Despite it being very simple to order a PCB, it's still very easy to make mistakes. It had turned out the switches had been put on the same of the PCB as the diodes. Luckily, the diodes had almost all been placed in a way that the key switches, could be placed directly over the top without any issue. There was only 1 exception (pictured below) where the diode had to be soldered directly to the PCB traces to give enough clearance for the switch.</p>
         <img src="media/stenokeyboard/trace%20fixing.jpg" alt="Trace Fixing">
         <p></p>
         <img src="media/stenokeyboard/wood_frame.jpg" alt="Wood Frame">
